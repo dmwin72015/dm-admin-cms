@@ -23,7 +23,8 @@ class httpRequest {
     // 添加请求拦截器
     instance.interceptors.request.use(config => {
       if (!config.url.includes('/users')) {
-        config.headers['x-access-token'] = Cookies.get(TOKEN_KEY)
+        // TODO: 暂时去掉权限验证
+        // config.headers['x-access-token'] = Cookies.get(TOKEN_KEY)
       }
       // Spin.show()
       // 在发送请求之前做些什么
@@ -43,7 +44,7 @@ class httpRequest {
         }, 500)
       }
       if (!(data instanceof Blob)) {
-        if (data.code !== 200) {
+        if (data.code !== 0) {
           // 后端服务在个别情况下回报201，待确认
           if (data.code === 401) {
             Cookies.remove(TOKEN_KEY)
@@ -65,11 +66,11 @@ class httpRequest {
   // 创建实例
   create () {
     let conf = {
-      baseURL: baseURL,
+      baseURL: baseURL.server,
       // timeout: 2000,
       headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'X-URL-PATH': location.pathname
+        'Content-Type': 'application/json; charset=utf-8'
+        // 'X-URL-PATH': location.pathname
       }
     }
     return Axios.create(conf)

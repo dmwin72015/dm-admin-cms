@@ -1,5 +1,5 @@
-import Main from "@/view/main";
-import parentView from "@/components/parent-view";
+import Main from '@/view/main'
+import parentView from '@/components/parent-view'
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
  * meta: {
@@ -9,20 +9,13 @@ import parentView from "@/components/parent-view";
  *  icon: (-) 该页面在左侧菜单、面包屑和标签导航处显示的图标，如果是自定义图标，需要在图标名称前加下划线'_'
  * }
  */
-export default [
+
+// 左侧菜单显示的
+const menuRoutes = [
   {
-    path: "/login",
-    name: "login",
-    meta: {
-      title: "Login - 登录",
-      hideInMenu: true
-    },
-    component: () => import("@/view/login/login.vue")
-  },
-  {
-    path: "/",
-    name: "home",
-    redirect: "/home",
+    path: '/',
+    name: 'home_index',
+    redirect: '/home',
     component: Main,
     meta: {
       hideInMenu: true,
@@ -30,227 +23,272 @@ export default [
     },
     children: [
       {
-        path: "home",
-        name: "home",
+        path: 'home',
+        name: 'home',
         meta: {
           hideInMenu: true,
           notCache: true
         },
-        component: () => import("@/view/single-page/home")
+        component: () => import('@/view/single-page/home')
       }
     ]
   },
   {
-    path: "",
-    name: "doc",
-    meta: {
-      title: "文档",
-      href: "https://lison16.github.io/iview-admin-doc/#/",
-      icon: "ios-book"
-    }
-  },
-  {
-    path: "/join",
-    name: "join",
+    path: '/coin',
+    name: '韭菜币',
     component: Main,
+    meta: {
+      notCache: false,
+      title: '韭菜币',
+      icon: 'social-bitcoin',
+    },
     children: [
       {
-        path: "join_page",
-        name: "join_page",
+        path: 'list',
+        name: 'has-adopted-list',
         meta: {
-          icon: "_qq",
-          title: "QQ群"
+          icon: 'social-bitcoin-outline',
+          title: '列表'
         },
-        component: () => import("@/view/join-page.vue")
+        component: () => import('@/view/coin/list')
+      },
+      {
+        path: 'confirm',
+        name: 'to-adopted-list',
+        meta: {
+          icon: 'social-buffer',
+          title: '待审核'
+        },
+        component: () => import('@/view/coin/list')
       }
     ]
   },
   {
-    path: "/components",
-    name: "components",
+    path: '/components',
+    name: 'components',
     meta: {
-      icon: "social-buffer",
-      title: "组件"
+      icon: 'social-buffer',
+      title: '组件'
     },
     component: Main,
     children: [
       {
-        path: "count_to_page",
-        name: "count_to_page",
+        path: 'count_to_page',
+        name: 'count_to_page',
         meta: {
-          icon: "arrow-graph-up-right",
-          title: "数字渐变"
+          icon: 'arrow-graph-up-right',
+          title: '数字渐变'
         },
-        component: () => import("@/view/components/count-to/count-to.vue")
+        component: () => import('@/view/components/count-to/count-to.vue')
       },
       {
-        path: "tables_page",
-        name: "tables_page",
+        path: 'tables_page',
+        name: 'tables_page',
         meta: {
-          icon: "ios-grid-view",
-          title: "多功能表格"
+          icon: 'ios-grid-view',
+          title: '多功能表格'
         },
-        component: () => import("@/view/components/tables/tables.vue")
+        component: () => import('@/view/components/tables/tables.vue')
       },
       {
-        path: "split_pane_page",
-        name: "split_pane_page",
+        path: 'split_pane_page',
+        name: 'split_pane_page',
         meta: {
-          icon: "pause",
-          title: "分割窗口"
+          icon: 'pause',
+          title: '分割窗口'
         },
-        component: () => import("@/view/components/split-pane/split-pane.vue")
+        component: () => import('@/view/components/split-pane/split-pane.vue')
       },
       {
-        path: "markdown_page",
-        name: "markdown_page",
+        path: 'markdown_page',
+        name: 'markdown_page',
         meta: {
-          icon: "social-markdown",
-          title: "Markdown编辑器"
+          icon: 'social-markdown',
+          title: 'Markdown编辑器'
         },
-        component: () => import("@/view/components/markdown/markdown.vue")
+        component: () => import('@/view/components/markdown/markdown.vue')
       },
       {
-        path: "editor_page",
-        name: "editor_page",
+        path: 'editor_page',
+        name: 'editor_page',
         meta: {
-          icon: "compose",
-          title: "富文本编辑器"
+          icon: 'compose',
+          title: '富文本编辑器'
         },
-        component: () => import("@/view/components/editor/editor.vue")
+        component: () => import('@/view/components/editor/editor.vue')
       },
       {
-        path: "icons_page",
-        name: "icons_page",
+        path: 'icons_page',
+        name: 'icons_page',
         meta: {
-          icon: "_bear",
-          title: "自定义图标"
+          icon: '_bear',
+          title: '自定义图标'
         },
-        component: () => import("@/view/components/icons/icons.vue")
+        component: () => import('@/view/components/icons/icons.vue')
       }
     ]
   },
   {
-    path: "/update",
-    name: "update",
+    path: '/update',
+    name: 'update',
     meta: {
-      icon: "upload",
-      title: "数据上传"
+      icon: 'upload',
+      title: '数据上传'
     },
     component: Main,
     children: [
       {
-        path: "update_table_page",
-        name: "update_table_page",
+        path: 'update_table_page',
+        name: 'update_table_page',
         meta: {
-          icon: "document-text",
-          title: "上传Csv"
+          icon: 'document-text',
+          title: '上传Csv'
         },
-        component: () => import("@/view/update/update-table.vue")
+        component: () => import('@/view/update/update-table.vue')
       },
       {
-        path: "update_paste_page",
-        name: "update_paste_page",
+        path: 'update_paste_page',
+        name: 'update_paste_page',
         meta: {
-          icon: "clipboard",
-          title: "粘贴表格数据"
+          icon: 'clipboard',
+          title: '粘贴表格数据'
         },
-        component: () => import("@/view/update/update-paste.vue")
+        component: () => import('@/view/update/update-paste.vue')
       }
     ]
   },
   {
-    path: "/directive",
-    name: "directive",
+    path: '/directive',
+    name: 'directive',
     meta: {
       hide: true
     },
     component: Main,
     children: [
       {
-        path: "directive_page",
-        name: "directive_page",
+        path: 'directive_page',
+        name: 'directive_page',
         meta: {
-          icon: "ios-navigate",
-          title: "指令"
+          icon: 'ios-navigate',
+          title: '指令'
         },
-        component: () => import("@/view/directive/directive.vue")
+        component: () => import('@/view/directive/directive.vue')
       }
     ]
   },
   {
-    path: "/multilevel",
-    name: "multilevel",
+    path: '/multilevel',
+    name: 'multilevel',
     meta: {
-      icon: "arrow-graph-up-right",
-      title: "多级菜单"
+      icon: 'arrow-graph-up-right',
+      title: '多级菜单'
     },
     component: Main,
     children: [
       {
-        path: "level_2_1",
-        name: "level_2_1",
+        path: 'level_2_1',
+        name: 'level_2_1',
         meta: {
-          icon: "arrow-graph-up-right",
-          title: "二级-1"
+          icon: 'arrow-graph-up-right',
+          title: '二级-1'
         },
-        component: () => import("@/view/multilevel/level-2-1.vue")
+        component: () => import('@/view/multilevel/level-2-1.vue')
       },
       {
-        path: "level_2_2",
-        name: "level_2_2",
+        path: 'level_2_2',
+        name: 'level_2_2',
         meta: {
-          access: ["super_admin"],
-          icon: "arrow-graph-up-right",
+          access: ['super_admin'],
+          icon: 'arrow-graph-up-right',
           showAlways: true,
-          title: "二级-2"
+          title: '二级-2'
         },
         component: parentView,
         children: [
           {
-            path: "level_2_2_1",
-            name: "level_2_2_1",
+            path: 'level_2_2_1',
+            name: 'level_2_2_1',
             meta: {
-              icon: "arrow-graph-up-right",
-              title: "三级"
+              icon: 'arrow-graph-up-right',
+              title: '三级'
             },
-            component: () => import("@/view/multilevel/level-2-2/level-3-1.vue")
+            component: () => import('@/view/multilevel/level-2-2/level-3-1.vue')
           }
         ]
       },
       {
-        path: "level_2_3",
-        name: "level_2_3",
+        path: 'level_2_3',
+        name: 'level_2_3',
         meta: {
-          icon: "arrow-graph-up-right",
-          title: "二级-3"
+          icon: 'arrow-graph-up-right',
+          title: '二级-3'
         },
-        component: () => import("@/view/multilevel/level-2-3.vue")
+        component: () => import('@/view/multilevel/level-2-3.vue')
       }
     ]
   },
   {
-    path: "/401",
-    name: "error_401",
+    path: '/401',
+    name: 'error_401',
     meta: {
       hideInMenu: true
     },
-    component: () => import("@/view/error-page/401.vue")
+    component: () => import('@/view/error-page/401.vue')
   },
   {
-    path: "/500",
-    name: "error_500",
+    path: '/500',
+    name: 'error_500',
     meta: {
       hideInMenu: true
     },
-    component: () => import("@/view/error-page/500.vue")
+    component: () => import('@/view/error-page/500.vue')
   },
   {
-    path: "*",
-    name: "error_404",
+    path: '*',
+    name: 'error_404',
     meta: {
       hideInMenu: true
     },
-    component: () => import("@/view/error-page/404.vue")
+    component: () => import('@/view/error-page/404.vue')
   }
-];
+]
+// 不必需左侧菜单显示
+const otherRoutes = [
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      title: 'Login - 登录',
+      hideInMenu: true
+    },
+    component: () => import('@/view/login/login.vue')
+  },
+  {
+    path: '',
+    name: 'doc',
+    meta: {
+      title: '文档',
+      href: 'https://lison16.github.io/iview-admin-doc/#/',
+      icon: 'ios-book'
+    }
+  },
+  {
+    path: '/join',
+    name: 'join',
+    component: Main,
+    children: [
+      {
+        path: 'join_page',
+        name: 'join_page',
+        meta: {
+          icon: '_qq',
+          title: 'QQ群'
+        },
+        component: () => import('@/view/join-page.vue')
+      }
+    ]
+  }
+]
+export { menuRoutes, otherRoutes }
+
+export default menuRoutes.concat(otherRoutes)

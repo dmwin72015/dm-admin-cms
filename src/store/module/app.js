@@ -6,7 +6,7 @@ import {
   getHomeRoute
 } from '@/libs/util'
 
-import routers from '@/router/routers'
+import { menuRoutes as routers } from '@/router/routers'
 
 export default {
   state: {

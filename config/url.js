@@ -1,6 +1,19 @@
-import env from './env'
+/**
+ * 根据环境 判断使用使用接口
+ * host 前端域名
+ * server 后端接口域名
+ * ws socket域名
+ */
+const baseUrls = [
+  {
+    host: 'localhost:',
+    server: 'http://serve.dm.cc',
+    ws: ''
+  }
+]
 
-const DEV_URL = 'https://www.easy-mock.com/mock/5add9213ce4d0e69998a6f51/iview-admin/'
-const PRO_URL = 'https://produce.com'
+let host = document.host
 
-export default env === 'development' ? DEV_URL : PRO_URL
+let result = baseUrls.filter(ele => ele.host.indexOf(host) !== -1)[0] || baseUrls[0]
+
+export default result
