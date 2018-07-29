@@ -1,6 +1,7 @@
 <template>
   <Layout style="height: 100%" class="main">
     <Sider hide-trigger collapsible :width="256" :collapsed-width="64" v-model="collapsed">
+      <!-- 左侧菜单 -->
       <side-menu accordion :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList">
         <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
         <div class="logo-con">
@@ -10,6 +11,7 @@
       </side-menu>
     </Sider>
     <Layout>
+      <!-- 顶部面包屑导航 -->
       <Header class="header-con">
         <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange">
           <user :user-avator="userAvator"/>
@@ -19,14 +21,18 @@
       </Header>
       <Content>
         <Layout>
+          <!-- 缓存的已经打开页面 START-->
           <div class="tag-nav-wrapper">
             <tags-nav :value="$route" @input="handleClick" :list="tagNavList" @on-close="handleCloseTag"/>
           </div>
+          <!-- 缓存的已经打开页面 END-->
+          <!-- ### 页面的内容区域 START### -->
           <Content class="content-wrapper">
             <keep-alive :include="cacheList">
               <router-view/>
             </keep-alive>
           </Content>
+          <!-- ### 页面的内容区域 END### -->
         </Layout>
       </Content>
     </Layout>

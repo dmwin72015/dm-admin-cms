@@ -4,19 +4,17 @@
     <Form ref="formInline" :model="search_condition" :rules="condition_rule" inline>
       <FormItem prop="user">
         <Input type="text" size="large" v-model="search_condition.name" placeholder="名字" style="width:240px">
-        <Icon type="ios-person-outline" slot="prepend"></Icon>
         </Input>
       </FormItem>
       <FormItem prop="password">
-        <Input type="password" size="large" v-model="search_condition.symbol" placeholder="Symbol" style="width:240px">
-        <Icon type="ios-locked-outline" slot="prepend"></Icon>
+        <Input type="text" size="large" v-model="search_condition.symbol" placeholder="Symbol" style="width:240px">
         </Input>
       </FormItem>
       <FormItem>
         <Button type="primary" @click="handleSubmit('formInline')" size="large">查询</Button>
       </FormItem>
       <FormItem>
-        <Button type="primary" @click="handleSubmit('formInline')" size="large">添加</Button>
+        <Button type="primary" @click="add" size="large">添加</Button>
       </FormItem>
       <FormItem>
         <Button type="error" @click="handleSubmit('formInline')" size="large">删除</Button>
@@ -146,6 +144,10 @@ export default {
           this.loading = false
           throw err
         })
+    },
+    // add
+    add() {
+      this.$router.push('/coin/add')
     }
   }
 }

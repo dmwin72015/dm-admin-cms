@@ -29,7 +29,7 @@
             @on-close="handleClose"
             @click.native="handleClick(item)"
             :closable="item.name !== 'home'"
-            :color="item.name === value.name ? 'blue' : 'default'"
+            :color="item.name === value.name ? 'primary' : 'default'"
           >{{ showTitleInside(item) }}</Tag>
         </transition-group>
       </div>

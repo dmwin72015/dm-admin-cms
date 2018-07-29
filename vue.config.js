@@ -35,5 +35,11 @@ module.exports = {
       .set('_conf', resolve('config'))
   },
   // 打包时不生成.map文件
-  productionSourceMap: false
+  productionSourceMap: false,
+
+  // server dev
+  devServer: {
+    port: 9501,
+    disableHostCheck: true // 必须关闭，否则nginx代理失败
+  }
 }

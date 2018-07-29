@@ -40,7 +40,7 @@ const menuRoutes = [
     meta: {
       notCache: false,
       title: '韭菜币',
-      icon: 'social-bitcoin',
+      icon: 'logo-bitcoin'
     },
     children: [
       {
@@ -60,6 +60,15 @@ const menuRoutes = [
           title: '待审核'
         },
         component: () => import('@/view/coin/list')
+      },
+      {
+        path: 'add',
+        name: 'coin-add',
+        meta: {
+          hideInMenu: true,
+          title: '添加'
+        },
+        component: () => import('@/view/coin/add')
       }
     ]
   },
@@ -67,7 +76,7 @@ const menuRoutes = [
     path: '/components',
     name: 'components',
     meta: {
-      icon: 'social-buffer',
+      icon: 'logo-buffer',
       title: '组件'
     },
     component: Main,
@@ -132,7 +141,7 @@ const menuRoutes = [
     path: '/update',
     name: 'update',
     meta: {
-      icon: 'upload',
+      icon: 'md-cloud-upload',
       title: '数据上传'
     },
     component: Main,
