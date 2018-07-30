@@ -1,11 +1,10 @@
 <template>
   <div v-if="showFullScreenBtn" class="full-screen-btn-con">
     <Tooltip :content="value ? '退出全屏' : '全屏'" placement="bottom">
-      <Icon @click.native="handleChange" :type="value ? 'arrow-shrink' : 'arrow-expand'" :size="23"></Icon>
+      <Icon @click.native="handleChange" :type="value ? 'ios-expand' : 'ios-expand'" :size="23"></Icon>
     </Tooltip>
   </div>
 </template>
-
 <script>
 export default {
   name: 'Fullscreen',

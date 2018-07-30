@@ -3,7 +3,7 @@
     <div class="close-con">
       <Dropdown transfer @on-click="handleTagsOption" style="margin-top:7px;">
         <Button size="small" type="text">
-          <Icon :size="18" type="ios-close-outline"></Icon>
+          <Icon :size="18" type="md-close-circle"></Icon>
         </Button>
         <DropdownMenu slot="list">
           <DropdownItem name="close-all">关闭所有</DropdownItem>
@@ -12,16 +12,16 @@
       </Dropdown>
     </div>
     <div class="btn-con left-btn">
-      <Button icon="chevron-left" type="text" @click="handleScroll(240)"></Button>
+      <Button icon="ios-arrow-dropleft" type="text" @click="handleScroll(240)"></Button>
     </div>
     <div class="btn-con right-btn">
-      <Button icon="chevron-right" type="text" @click="handleScroll(-240)"></Button>
+      <Button icon="ios-arrow-dropright" type="text" @click="handleScroll(-240)"></Button>
     </div>
     <div class="scroll-outer" ref="scrollOuter" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
       <div ref="scrollBody" class="scroll-body" :style="{left: tagBodyLeft + 'px'}">
         <transition-group name="taglist-moving-animation">
           <Tag
-            type="dot"
+            type = "item.name === value.name ? 'primary' : 'default'"
             v-for="item in list"
             ref="tagsPageOpened"
             :key="`tag-nav-${item.name}`"
@@ -29,7 +29,7 @@
             @on-close="handleClose"
             @click.native="handleClick(item)"
             :closable="item.name !== 'home'"
-            :color="item.name === value.name ? 'primary' : 'default'"
+            :color= "item.name === value.name ? 'primary' : 'default'"
           >{{ showTitleInside(item) }}</Tag>
         </transition-group>
       </div>
